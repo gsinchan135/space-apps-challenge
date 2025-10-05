@@ -563,6 +563,27 @@ class FinalExoplanetModel:
         logging.info(f"Feature importance plot saved to {save_path}")
         return fig
     
+    def get_feature_importance(self, top_n: int = 15) -> pd.DataFrame:
+        """
+        Get feature importance as a DataFrame.
+        
+        Args:
+            top_n: Number of top features to return
+            
+        Returns:
+            DataFrame with features and their importance scores
+        """
+        if not self.is_trained:
+            raise ValueError("Model must be trained to get feature importance")
+        
+        # Get feature importance
+        importance_df = pd.DataFrame({
+            'feature': self.feature_names,
+            'importance': self.model.feature_importances_
+        }).sort_values('importance', ascending=False).head(top_n)
+        
+        return importance_df
+    
     def save_model(self, filepath: str = 'final_exoplanet_model.joblib') -> None:
         """Save the trained model and all preprocessing objects."""
         if not self.is_trained:
