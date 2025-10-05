@@ -200,19 +200,50 @@ class ExoHunterApp:
         if self.df is None:
             messagebox.showwarning('No data','Load CSV first')
             return
-        target = self.target_combo.get()
-        features = [self.features_listbox.get(i) for i in self.features_listbox.curselection()]
-        if not target or not features:
-            messagebox.showwarning('Incomplete','Select target and at least one feature')
-            return
-        hyperparams = {
-            'n_estimators': int(self.n_estimators_spin.get()),
-            'max_depth': int(self.max_depth_spin.get()) or None
-        }
-        threading.Thread(
-            target=train_model_backend,
-            args=(self.df,target,features,hyperparams,self.receive_results)
-        ).start()
+        import data_processing
+        from sklearn.ensemble import RandomForestClassifier
+        from sklearn.metrics import confusion_matrix, accuracy_score
+        from sklearn.model_selection import train_test_split
+        import numpy as np
+        try:
+            # Process the loaded CSV using data_processing.py
+            processed_df = data_processing.process_data(save_csv=False, setup_logging=False)
+            # Assume koi_disposition is the target
+            if 'koi_disposition' not in processed_df.columns:
+                messagebox.showerror('Processing Error', 'Target column "koi_disposition" not found in processed data.')
+                return
+            X = processed_df.drop(columns=['koi_disposition'])
+            y = processed_df['koi_disposition']
+            # Encode target if needed
+            if y.dtype == 'object':
+                y = y.astype('category').cat.codes
+            # Fill any remaining NaNs
+            X = X.fillna(0)
+            # Train/test split
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            try:
+                n_estimators = int(self.n_estimators_spin.get())
+            except Exception:
+                n_estimators = 100
+            try:
+                max_depth = int(self.max_depth_spin.get())
+            except Exception:
+                max_depth = None
+            if max_depth == 0:
+                max_depth = None
+            clf = RandomForestClassifier(
+                n_estimators=n_estimators if n_estimators > 0 else 100,
+                max_depth=max_depth,
+                random_state=42
+            )
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            acc = accuracy_score(y_test, y_pred)
+            cm = confusion_matrix(y_test, y_pred)
+            self.acc_label.config(text=f"Accuracy: {acc:.4f}")
+            self.update_confusion_matrix(cm)
+        except Exception as e:
+            messagebox.showerror('Processing Error', f'Error during data processing or model training: {e}')
 
     def receive_results(self, results):
         self.acc_label.config(text=f"Accuracy: {results['accuracy']:.4f}")
