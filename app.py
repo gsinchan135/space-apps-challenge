@@ -7,9 +7,15 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import seaborn as sns
+import pygame
+import os
+import time
 
 # Set matplotlib backend for tkinter
 plt.style.use('default')
+
+# Initialize pygame mixer for audio
+pygame.mixer.init()
 
 # Optional drag-and-drop support
 try:
@@ -73,19 +79,351 @@ class ExoHunterApp:
         # Load in background thread
         threading.Thread(target=load_model, daemon=True).start()
 
+    def play_background_music(self):
+        """Play the space.mp3 background music"""
+        try:
+            music_path = os.path.join(os.path.dirname(__file__), "space.mp3")
+            if os.path.exists(music_path):
+                pygame.mixer.music.load(music_path)
+                pygame.mixer.music.set_volume(0.3)  # Set volume to 30%
+                pygame.mixer.music.play(-1)  # Play indefinitely
+                print("🎵 Background music started")
+            else:
+                print("⚠️ space.mp3 not found")
+        except Exception as e:
+            print(f"⚠️ Background music could not be loaded: {e}")
+            print("🎵 Continuing without background music...")
+
+    def build_home_tab(self):
+        """Build the home page with description and integrated visualizations"""
+        # Home tab background is already set in build_ui as tk.Frame with bg
+        
+        # Main container with scrollbar
+        canvas = tk.Canvas(self.home_tab, bg='#0a0f1f', highlightthickness=0)
+        scrollbar = ttk.Scrollbar(self.home_tab, orient="vertical", command=canvas.yview)
+        scrollable_frame = ttk.Frame(canvas)
+        
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+        
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        
+        # Pack canvas and scrollbar
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+        
+        # Title section
+        title_frame = tk.Frame(scrollable_frame, bg='#0a0f1f', height=150)
+        title_frame.pack(fill='x', padx=20, pady=20)
+        
+        title_label = tk.Label(title_frame, 
+                              text="🌌 ExoHunter - AI Exoplanet Discovery Tool 🚀",
+                              font=('Arial', 28, 'bold'),
+                              fg='#ffcc66',
+                              bg='#0a0f1f')
+        title_label.pack(pady=10)
+        
+        subtitle_label = tk.Label(title_frame,
+                                 text="Hunting for Distant Worlds with Artificial Intelligence",
+                                 font=('Arial', 16, 'italic'),
+                                 fg='#66ccff',
+                                 bg='#0a0f1f')
+        subtitle_label.pack()
+        
+        # Problem description section
+        desc_frame = tk.Frame(scrollable_frame, bg='#1a1f2f', relief='raised', bd=2)
+        desc_frame.pack(fill='x', padx=20, pady=20)
+        
+        desc_title = tk.Label(desc_frame,
+                             text="🎯 The Challenge: Finding Exoplanets",
+                             font=('Arial', 20, 'bold'),
+                             fg='#ffcc66',
+                             bg='#1a1f2f')
+        desc_title.pack(pady=15)
+        
+        desc_text = tk.Text(desc_frame, 
+                           height=8, 
+                           font=('Arial', 12),
+                           fg='white',
+                           bg='#1a1f2f',
+                           wrap='word',
+                           relief='flat',
+                           state='normal')
+        desc_text.pack(fill='x', padx=20, pady=10)
+        
+        problem_description = """🌟 Exoplanets are planets that orbit stars outside our solar system. With over 5,000 confirmed exoplanets discovered, we're constantly searching for more!
+
+🔍 The Challenge: Traditional methods of finding exoplanets require manual analysis of massive datasets from space telescopes like Kepler. This process is time-consuming and can miss subtle planetary signals.
+
+🤖 Our AI Solution: We've developed an intelligent system that can automatically analyze light curves from stars to detect the tiny dips in brightness that occur when a planet passes in front of its host star (called a transit).
+
+⭐ Key Features:
+• Advanced machine learning algorithms trained on NASA Kepler data
+• Real-time visualization of planetary transits and solar systems
+• Interactive data exploration and AI-powered predictions
+• Feature importance analysis to understand what makes a planet detectable
+
+🚀 Mission: Help astronomers discover new worlds and advance our understanding of planetary systems throughout the galaxy!"""
+        
+        desc_text.insert('1.0', problem_description)
+        desc_text.configure(state='disabled')
+        
+        # Visualization section
+        viz_frame = tk.Frame(scrollable_frame, bg='#0a0f1f')
+        viz_frame.pack(fill='both', expand=True, padx=20, pady=20)
+        
+        # Solar System Visualization
+        self.add_solar_system_viz(viz_frame)
+        
+        # Graph Interpreter Section
+        self.add_graph_interpreter_viz(viz_frame)
+
+    def add_solar_system_viz(self, parent):
+        """Add embedded solar system visualization"""
+        solar_frame = tk.LabelFrame(parent, 
+                                   text="🌞 Exoplanet Transit Simulation",
+                                   font=('Arial', 16, 'bold'),
+                                   fg='#ffcc66',
+                                   bg='#1a1f2f',
+                                   labelanchor='n')
+        solar_frame.pack(fill='x', pady=10)
+        
+        # Create embedded canvas for solar system
+        self.solar_canvas = tk.Canvas(solar_frame, 
+                                     width=600, 
+                                     height=400, 
+                                     bg='#0a0f1f',
+                                     highlightthickness=0)
+        self.solar_canvas.pack(pady=10)
+        
+        # Add control buttons
+        control_frame = tk.Frame(solar_frame, bg='#1a1f2f')
+        control_frame.pack(pady=10)
+        
+        start_btn = tk.Button(control_frame, 
+                             text="▶️ Start Transit Animation",
+                             command=self.start_solar_animation,
+                             bg='#33cc33',
+                             fg='white',
+                             font=('Arial', 12, 'bold'))
+        start_btn.pack(side='left', padx=10)
+        
+        stop_btn = tk.Button(control_frame,
+                            text="⏹️ Stop Animation", 
+                            command=self.stop_solar_animation,
+                            bg='#cc3333',
+                            fg='white',
+                            font=('Arial', 12, 'bold'))
+        stop_btn.pack(side='left', padx=10)
+        
+        # Initialize animation variables
+        self.solar_animation_running = False
+        self.solar_animation_thread = None
+
+    def add_graph_interpreter_viz(self, parent):
+        """Add graph interpreter visualization"""
+        graph_frame = tk.LabelFrame(parent,
+                                   text="📊 Light Curve Analysis",
+                                   font=('Arial', 16, 'bold'),
+                                   fg='#ffcc66', 
+                                   bg='#1a1f2f',
+                                   labelanchor='n')
+        graph_frame.pack(fill='x', pady=10)
+        
+        # Create matplotlib figure for light curve
+        self.light_curve_fig = Figure(figsize=(12, 4), facecolor='#1a1f2f')
+        self.light_curve_ax = self.light_curve_fig.add_subplot(111, facecolor='#0a0f1f')
+        self.light_curve_canvas = FigureCanvasTkAgg(self.light_curve_fig, master=graph_frame)
+        self.light_curve_canvas.get_tk_widget().pack(fill='x', padx=10, pady=10)
+        
+        # Control panel for graph interpreter
+        graph_control_frame = tk.Frame(graph_frame, bg='#1a1f2f')
+        graph_control_frame.pack(pady=10)
+        
+        tk.Label(graph_control_frame, 
+                text="🪐 Select Planet:",
+                font=('Arial', 12, 'bold'),
+                fg='white',
+                bg='#1a1f2f').pack(side='left', padx=5)
+        
+        self.planet_var = tk.StringVar(value="Kepler-10b")
+        planet_combo = ttk.Combobox(graph_control_frame, 
+                                   textvariable=self.planet_var,
+                                   values=["Kepler-10b", "Kepler-11b", "Kepler-22b", "Kepler-442b"],
+                                   state="readonly",
+                                   width=15)
+        planet_combo.pack(side='left', padx=5)
+        
+        generate_btn = tk.Button(graph_control_frame,
+                                text="📈 Generate Light Curve",
+                                command=self.generate_light_curve,
+                                bg='#66ccff',
+                                fg='white',
+                                font=('Arial', 11, 'bold'))
+        generate_btn.pack(side='left', padx=10)
+
+    def start_solar_animation(self):
+        """Start the solar system animation"""
+        if not self.solar_animation_running:
+            self.solar_animation_running = True
+            self.solar_animation_thread = threading.Thread(target=self.run_solar_animation, daemon=True)
+            self.solar_animation_thread.start()
+
+    def stop_solar_animation(self):
+        """Stop the solar system animation"""
+        self.solar_animation_running = False
+
+    def run_solar_animation(self):
+        """Run the solar system animation loop"""
+        angle = 0
+        star_x, star_y = 300, 200
+        orbit_radius = 150
+        planet_radius = 8
+        star_radius = 20
+        
+        while self.solar_animation_running:
+            try:
+                # Clear canvas
+                self.solar_canvas.delete("all")
+                
+                # Draw star
+                self.solar_canvas.create_oval(star_x - star_radius, star_y - star_radius,
+                                            star_x + star_radius, star_y + star_radius,
+                                            fill='#ffcc66', outline='#ffe066', width=2)
+                
+                # Draw orbit
+                self.solar_canvas.create_oval(star_x - orbit_radius, star_y - orbit_radius,
+                                            star_x + orbit_radius, star_y + orbit_radius,
+                                            outline='#334466', width=1)
+                
+                # Calculate planet position
+                planet_x = star_x + orbit_radius * np.cos(angle)
+                planet_y = star_y + orbit_radius * np.sin(angle)
+                
+                # Draw planet
+                self.solar_canvas.create_oval(planet_x - planet_radius, planet_y - planet_radius,
+                                            planet_x + planet_radius, planet_y + planet_radius,
+                                            fill='#66ccff', outline='#88ccff', width=1)
+                
+                # Draw light rays when planet transits
+                if abs(planet_x - star_x) < star_radius + planet_radius:
+                    # Planet is transiting - draw blocked light
+                    for i in range(50):
+                        ray_angle = i * (2 * np.pi / 50)
+                        ray_x = star_x + 250 * np.cos(ray_angle)
+                        ray_y = star_y + 250 * np.sin(ray_angle)
+                        
+                        # Check if ray is blocked by planet
+                        if np.sqrt((ray_x - planet_x)**2 + (ray_y - planet_y)**2) > planet_radius:
+                            self.solar_canvas.create_line(star_x, star_y, ray_x, ray_y,
+                                                         fill='#ffe066', width=1)
+                else:
+                    # Normal light rays
+                    for i in range(50):
+                        ray_angle = i * (2 * np.pi / 50)
+                        ray_x = star_x + 250 * np.cos(ray_angle)
+                        ray_y = star_y + 250 * np.sin(ray_angle)
+                        self.solar_canvas.create_line(star_x, star_y, ray_x, ray_y,
+                                                     fill='#ffe066', width=1)
+                
+                # Add labels
+                self.solar_canvas.create_text(star_x, star_y + 50, text="⭐ Host Star",
+                                            fill='#ffcc66', font=('Arial', 12, 'bold'))
+                self.solar_canvas.create_text(planet_x, planet_y - 20, text="🪐 Exoplanet",
+                                            fill='#66ccff', font=('Arial', 10, 'bold'))
+                
+                angle += 0.05
+                time.sleep(0.05)
+                
+            except Exception as e:
+                print(f"Animation error: {e}")
+                break
+
+    def generate_light_curve(self):
+        """Generate a sample light curve for the selected planet"""
+        try:
+            # Clear previous plot
+            self.light_curve_ax.clear()
+            
+            # Generate sample data (simulating real exoplanet transit)
+            time_days = np.linspace(0, 10, 1000)
+            
+            # Base stellar brightness with noise
+            baseline_flux = 1.0
+            noise = np.random.normal(0, 0.001, len(time_days))
+            flux = np.ones_like(time_days) + noise
+            
+            # Add transit dips
+            transit_period = 3.5  # days
+            transit_duration = 0.15  # days
+            transit_depth = 0.01  # 1% dip
+            
+            for i, t in enumerate(time_days):
+                # Check if we're in a transit
+                phase = (t % transit_period) / transit_period
+                if abs(phase - 0.5) < (transit_duration / transit_period / 2):
+                    # Create transit shape (simplified)
+                    transit_phase = (phase - 0.5) / (transit_duration / transit_period / 2)
+                    if abs(transit_phase) < 1:
+                        flux[i] -= transit_depth * (1 - transit_phase**2)
+            
+            # Plot the light curve
+            self.light_curve_ax.plot(time_days, flux, 'w-', linewidth=1, alpha=0.7)
+            self.light_curve_ax.scatter(time_days[::50], flux[::50], c='#66ccff', s=8, alpha=0.8)
+            
+            # Highlight transit regions
+            for t_start in np.arange(0, 10, transit_period):
+                transit_center = t_start + transit_period/2
+                if transit_center < 10:
+                    self.light_curve_ax.axvspan(transit_center - transit_duration/2, 
+                                              transit_center + transit_duration/2,
+                                              alpha=0.3, color='red', label='Transit' if t_start == 0 else "")
+            
+            self.light_curve_ax.set_xlabel('Time (days)', color='white', fontsize=12)
+            self.light_curve_ax.set_ylabel('Relative Flux', color='white', fontsize=12)
+            self.light_curve_ax.set_title(f'🌟 Light Curve for {self.planet_var.get()} - Transit Detection',
+                                         color='#ffcc66', fontsize=14, fontweight='bold')
+            
+            # Style the plot
+            self.light_curve_ax.set_facecolor('#0a0f1f')
+            self.light_curve_ax.tick_params(colors='white')
+            self.light_curve_ax.spines['bottom'].set_color('white')
+            self.light_curve_ax.spines['top'].set_color('white') 
+            self.light_curve_ax.spines['right'].set_color('white')
+            self.light_curve_ax.spines['left'].set_color('white')
+            
+            if len(self.light_curve_ax.get_legend_handles_labels()[0]) > 0:
+                legend = self.light_curve_ax.legend(facecolor='#1a1f2f', edgecolor='white')
+                legend.get_texts()[0].set_color('white')
+            
+            self.light_curve_fig.patch.set_facecolor('#1a1f2f')
+            self.light_curve_canvas.draw()
+            
+        except Exception as e:
+            print(f"Error generating light curve: {e}")
+
     def build_ui(self):
+        """Build the main UI with tabs"""
         self.root.geometry('1400x900')
+        
+        # Play background music
+        self.play_background_music()
         
         # Create notebook for tabs
         self.notebook = ttk.Notebook(self.root)
         self.notebook.pack(fill='both', expand=True, padx=10, pady=10)
         
         # Create tabs
+        self.home_tab = tk.Frame(self.notebook, bg='#0a0f1f')
         self.data_tab = ttk.Frame(self.notebook)
         self.ml_tab = ttk.Frame(self.notebook)
         
+        self.notebook.add(self.home_tab, text="🏠 Home")
         self.notebook.add(self.data_tab, text="📊 Data Explorer")
         self.notebook.add(self.ml_tab, text="🤖 AI Predictions")
+        
+        # Build home tab
+        self.build_home_tab()
         
         # Build data tab
         self.build_data_tab()
