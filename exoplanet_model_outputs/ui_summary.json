@@ -1,0 +1,112 @@
+{
+  "model_ready": true,
+  "predictions_count": 9564,
+  "output_directory": "exoplanet_model_outputs",
+  "latest_predictions": [
+    {
+      "exoplanet_name": "K00752.01",
+      "predicted_class": "CONFIRMED",
+      "class_probabilities": {
+        "CANDIDATE": 0.0004703350715142399,
+        "CONFIRMED": 0.9995242978924497,
+        "FALSE POSITIVE": 5.36703603598786e-06
+      },
+      "confidence": 0.9995242978924497
+    },
+    {
+      "exoplanet_name": "K00752.02",
+      "predicted_class": "CONFIRMED",
+      "class_probabilities": {
+        "CANDIDATE": 0.00010418653470303343,
+        "CONFIRMED": 0.9998949277840021,
+        "FALSE POSITIVE": 8.856812948513592e-07
+      },
+      "confidence": 0.9998949277840021
+    },
+    {
+      "exoplanet_name": "K00753.01",
+      "predicted_class": "CANDIDATE",
+      "class_probabilities": {
+        "CANDIDATE": 0.9995967832423047,
+        "CONFIRMED": 0.00034426982032142024,
+        "FALSE POSITIVE": 5.894693737388654e-05
+      },
+      "confidence": 0.9995967832423047
+    },
+    {
+      "exoplanet_name": "K00754.01",
+      "predicted_class": "FALSE POSITIVE",
+      "class_probabilities": {
+        "CANDIDATE": 4.542897135865798e-05,
+        "CONFIRMED": 3.535353829717931e-05,
+        "FALSE POSITIVE": 0.9999192174903443
+      },
+      "confidence": 0.9999192174903443
+    },
+    {
+      "exoplanet_name": "K00755.01",
+      "predicted_class": "CONFIRMED",
+      "class_probabilities": {
+        "CANDIDATE": 0.0015347804893854522,
+        "CONFIRMED": 0.9984280344317933,
+        "FALSE POSITIVE": 3.718507882126803e-05
+      },
+      "confidence": 0.9984280344317933
+    },
+    {
+      "exoplanet_name": "K00756.01",
+      "predicted_class": "CONFIRMED",
+      "class_probabilities": {
+        "CANDIDATE": 0.003025170204421506,
+        "CONFIRMED": 0.996872865274773,
+        "FALSE POSITIVE": 0.00010196452080565955
+      },
+      "confidence": 0.996872865274773
+    },
+    {
+      "exoplanet_name": "K00756.02",
+      "predicted_class": "CONFIRMED",
+      "class_probabilities": {
+        "CANDIDATE": 7.488241801018357e-05,
+        "CONFIRMED": 0.9999224516861767,
+        "FALSE POSITIVE": 2.6658958132769867e-06
+      },
+      "confidence": 0.9999224516861767
+    },
+    {
+      "exoplanet_name": "K00756.03",
+      "predicted_class": "CONFIRMED",
+      "class_probabilities": {
+        "CANDIDATE": 0.0029921055023157564,
+        "CONFIRMED": 0.996975570242741,
+        "FALSE POSITIVE": 3.232425494312333e-05
+      },
+      "confidence": 0.996975570242741
+    },
+    {
+      "exoplanet_name": "K00114.01",
+      "predicted_class": "FALSE POSITIVE",
+      "class_probabilities": {
+        "CANDIDATE": 2.5265431275592655e-06,
+        "CONFIRMED": 9.313167380149458e-07,
+        "FALSE POSITIVE": 0.9999965421401344
+      },
+      "confidence": 0.9999965421401344
+    },
+    {
+      "exoplanet_name": "K00757.01",
+      "predicted_class": "CONFIRMED",
+      "class_probabilities": {
+        "CANDIDATE": 0.0025980521883446073,
+        "CONFIRMED": 0.9973767815287313,
+        "FALSE POSITIVE": 2.5166282924130368e-05
+      },
+      "confidence": 0.9973767815287313
+    }
+  ],
+  "class_distribution": {
+    "CONFIRMED": 2754,
+    "CANDIDATE": 1976,
+    "FALSE POSITIVE": 4834
+  }
+}

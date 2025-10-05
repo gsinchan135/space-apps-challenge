@@ -1,0 +1,55 @@
+{
+  "timestamp": "20251005_120930",
+  "model_type": "Gradient Boosting Classifier",
+  "hyperparameters": {
+    "n_estimators": 250,
+    "learning_rate": 0.12,
+    "max_depth": 7,
+    "min_samples_split": 8,
+    "min_samples_leaf": 3,
+    "subsample": 0.85,
+    "random_state": 42
+  },
+  "training_results": {
+    "validation_accuracy": 0.9205436487192891,
+    "validation_f1": 0.920624425581423,
+    "hyperparameters": {
+      "n_estimators": 250,
+      "learning_rate": 0.12,
+      "max_depth": 7,
+      "min_samples_split": 8,
+      "min_samples_leaf": 3,
+      "subsample": 0.85,
+      "random_state": 42
+    },
+    "feature_importance": {
+      "koi_fpflag_nt": 0.22119311927672625,
+      "koi_fpflag_ss": 0.1447133429300417,
+      "koi_fpflag_co": 0.2238055757463543,
+      "koi_fpflag_ec": 0.03587405763163018,
+      "koi_period": 0.026997812003537295,
+      "koi_time0bk": 0.011089215142896477,
+      "koi_impact": 0.01359151493737212,
+      "koi_duration": 0.020047944606964282,
+      "koi_depth": 0.013902420172916388,
+      "koi_prad": 0.05204181282363129,
+      "koi_teq": 0.007059144492280044,
+      "koi_insol": 0.007187989116518238,
+      "koi_model_snr": 0.1685721579399231,
+      "koi_tce_plnt_num": 0.005170891712374507,
+      "koi_steff": 0.008237875474337233,
+      "koi_slogg": 0.005786874103936708,
+      "koi_srad": 0.006241455350707363,
+      "ra": 0.010866730444784962,
+      "dec": 0.010235064977028526,
+      "koi_kepmag": 0.007385001116039158
+    }
+  },
+  "feature_count": 20,
+  "classes": [
+    "CANDIDATE",
+    "CONFIRMED",
+    "FALSE POSITIVE"
+  ],
+  "status": "trained"
+}

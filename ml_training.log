@@ -1,0 +1,213 @@
+2025-10-04 14:03:17,145 - INFO - Loading and preparing data...
+2025-10-04 14:03:17,145 - INFO - Starting data processing pipeline...
+2025-10-04 14:03:17,288 - INFO - Data loaded successfully from cumulative_2025.10.04_07.24.46.csv
+2025-10-04 14:03:17,288 - INFO - Initial data shape: (9564, 49)
+2025-10-04 14:03:17,304 - INFO - Removed leakage columns: ['koi_pdisposition', 'koi_vet_stat', 'koi_vet_date', 'koi_comment', 'koi_disp_prov', 'koi_score', 'kepler_name', 'kepid', 'kepoi_name']
+2025-10-04 14:03:17,319 - INFO - Dropped columns with >20.0% missing values: ['koi_teq_err1', 'koi_teq_err2']
+2025-10-04 14:03:17,326 - INFO - Applied median imputation to column 'koi_period_err1' (median: 3.5205e-05)
+2025-10-04 14:03:17,329 - INFO - Applied median imputation to column 'koi_period_err2' (median: -3.5205e-05)
+2025-10-04 14:03:17,331 - INFO - Applied median imputation to column 'koi_time0bk_err1' (median: 0.00413)
+2025-10-04 14:03:17,332 - INFO - Applied median imputation to column 'koi_time0bk_err2' (median: -0.00413)
+2025-10-04 14:03:17,334 - INFO - Applied median imputation to column 'koi_impact' (median: 0.537)
+2025-10-04 14:03:17,334 - INFO - Applied median imputation to column 'koi_impact_err1' (median: 0.193)
+2025-10-04 14:03:17,339 - INFO - Applied median imputation to column 'koi_impact_err2' (median: -0.207)
+2025-10-04 14:03:17,342 - INFO - Applied median imputation to column 'koi_duration_err1' (median: 0.142)
+2025-10-04 14:03:17,344 - INFO - Applied median imputation to column 'koi_duration_err2' (median: -0.142)
+2025-10-04 14:03:17,345 - INFO - Applied median imputation to column 'koi_depth' (median: 421.1)
+2025-10-04 14:03:17,347 - INFO - Applied median imputation to column 'koi_depth_err1' (median: 20.75)
+2025-10-04 14:03:17,349 - INFO - Applied median imputation to column 'koi_depth_err2' (median: -20.75)
+2025-10-04 14:03:17,351 - INFO - Applied median imputation to column 'koi_prad' (median: 2.39)
+2025-10-04 14:03:17,352 - INFO - Applied median imputation to column 'koi_prad_err1' (median: 0.52)
+2025-10-04 14:03:17,354 - INFO - Applied median imputation to column 'koi_prad_err2' (median: -0.3)
+2025-10-04 14:03:17,356 - INFO - Applied median imputation to column 'koi_teq' (median: 878.0)
+2025-10-04 14:03:17,360 - INFO - Applied median imputation to column 'koi_insol' (median: 141.6)
+2025-10-04 14:03:17,362 - INFO - Applied median imputation to column 'koi_insol_err1' (median: 72.83)
+2025-10-04 14:03:17,364 - INFO - Applied median imputation to column 'koi_insol_err2' (median: -40.26)
+2025-10-04 14:03:17,366 - INFO - Applied median imputation to column 'koi_model_snr' (median: 23.0)
+2025-10-04 14:03:17,367 - INFO - Applied median imputation to column 'koi_tce_plnt_num' (median: 1.0)
+2025-10-04 14:03:17,375 - INFO - Applied mode imputation to column 'koi_tce_delivname' (mode: q1_q17_dr25_tce)
+2025-10-04 14:03:17,378 - INFO - Applied median imputation to column 'koi_steff' (median: 5767.0)
+2025-10-04 14:03:17,380 - INFO - Applied median imputation to column 'koi_steff_err1' (median: 157.0)
+2025-10-04 14:03:17,380 - INFO - Applied median imputation to column 'koi_steff_err2' (median: -160.0)
+2025-10-04 14:03:17,380 - INFO - Applied median imputation to column 'koi_slogg' (median: 4.438)
+2025-10-04 14:03:17,380 - INFO - Applied median imputation to column 'koi_slogg_err1' (median: 0.07)
+2025-10-04 14:03:17,387 - INFO - Applied median imputation to column 'koi_slogg_err2' (median: -0.128)
+2025-10-04 14:03:17,389 - INFO - Applied median imputation to column 'koi_srad' (median: 1.0)
+2025-10-04 14:03:17,391 - INFO - Applied median imputation to column 'koi_srad_err1' (median: 0.251)
+2025-10-04 14:03:17,392 - INFO - Applied median imputation to column 'koi_srad_err2' (median: -0.111)
+2025-10-04 14:03:17,398 - INFO - Applied median imputation to column 'koi_kepmag' (median: 14.52)
+2025-10-04 14:03:17,400 - INFO - Missing value handling complete. Remaining missing values: 0
+2025-10-04 14:03:17,400 - INFO - Data shape after handling missing values: (9564, 42)
+2025-10-04 14:03:17,407 - INFO - Dropped text categorical variables: ['koi_tce_delivname']
+2025-10-04 14:03:17,408 - INFO - Kept text columns: ['koi_disposition']
+2025-10-04 14:03:17,410 - INFO - Data shape after dropping text columns: (9564, 41)
+2025-10-04 14:03:17,414 - INFO - Removed error columns: ['koi_period_err1', 'koi_period_err2', 'koi_time0bk_err1', 'koi_time0bk_err2', 'koi_impact_err1', 'koi_impact_err2', 'koi_duration_err1', 'koi_duration_err2', 'koi_depth_err1', 'koi_depth_err2', 'koi_prad_err1', 'koi_prad_err2', 'koi_insol_err1', 'koi_insol_err2', 'koi_steff_err1', 'koi_steff_err2', 'koi_slogg_err1', 'koi_slogg_err2', 'koi_srad_err1', 'koi_srad_err2']
+2025-10-04 14:03:17,415 - INFO - Data shape after removing error columns: (9564, 21)
+2025-10-04 14:03:17,814 - INFO - Cleaned data saved to: cleaned_data.csv
+2025-10-04 14:03:17,848 - INFO - Data processing pipeline completed successfully!
+2025-10-04 14:03:17,856 - INFO - Final data shape: (9564, 21)
+2025-10-04 14:03:17,868 - INFO - Data shape: (9564, 20)
+2025-10-04 14:03:17,872 - INFO - Target classes: ['CANDIDATE' 'CONFIRMED' 'FALSE POSITIVE']
+2025-10-04 14:03:17,874 - INFO - Class distribution: koi_disposition
+FALSE POSITIVE    4839
+CONFIRMED         2746
+CANDIDATE         1979
+Name: count, dtype: int64
+2025-10-04 14:03:17,929 - INFO - Training multiple models...
+2025-10-04 14:03:17,933 - INFO - Training Random Forest...
+2025-10-04 14:03:39,872 - INFO - Random Forest - CV F1 Score: 0.9226 (+/- 0.0082)
+2025-10-04 14:03:39,872 - INFO - Training Gradient Boosting...
+2025-10-04 14:06:09,448 - INFO - Gradient Boosting - CV F1 Score: 0.9229 (+/- 0.0099)
+2025-10-04 14:06:09,524 - INFO - Training Logistic Regression...
+2025-10-04 14:06:23,088 - INFO - Logistic Regression - CV F1 Score: 0.8018 (+/- 0.0216)
+2025-10-04 14:06:23,091 - INFO - Training SVM...
+2025-10-04 14:08:50,851 - INFO - SVM - CV F1 Score: 0.7602 (+/- 0.0149)
+2025-10-04 14:08:50,851 - INFO - Performing hyperparameter tuning...
+2025-10-04 14:18:11,724 - INFO - Best parameters: {'max_depth': 20, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 300}
+2025-10-04 14:18:11,724 - INFO - Best CV score: 0.9235
+2025-10-04 14:21:19,779 - INFO - Model saved to exoplanet_classifier.joblib
+2025-10-04 14:21:19,779 - INFO - ML pipeline completed successfully!
+2025-10-05 10:31:57,292 - INFO - Loading and preparing data...
+2025-10-05 10:31:57,300 - INFO - Starting data processing pipeline...
+2025-10-05 10:31:57,467 - INFO - Data loaded successfully from cumulative_2025.10.04_07.24.46.csv
+2025-10-05 10:31:57,467 - INFO - Initial data shape: (9564, 49)
+2025-10-05 10:31:57,489 - INFO - Removed leakage columns: ['koi_pdisposition', 'koi_vet_stat', 'koi_vet_date', 'koi_comment', 'koi_disp_prov', 'koi_score', 'kepler_name', 'kepid', 'kepoi_name']
+2025-10-05 10:31:57,504 - INFO - Dropped columns with >20.0% missing values: ['koi_teq_err1', 'koi_teq_err2']
+2025-10-05 10:31:57,516 - INFO - Applied median imputation to column 'koi_period_err1' (median: 3.5205e-05)
+2025-10-05 10:31:57,516 - INFO - Applied median imputation to column 'koi_period_err2' (median: -3.5205e-05)
+2025-10-05 10:31:57,522 - INFO - Applied median imputation to column 'koi_time0bk_err1' (median: 0.00413)
+2025-10-05 10:31:57,525 - INFO - Applied median imputation to column 'koi_time0bk_err2' (median: -0.00413)
+2025-10-05 10:31:57,528 - INFO - Applied median imputation to column 'koi_impact' (median: 0.537)
+2025-10-05 10:31:57,528 - INFO - Applied median imputation to column 'koi_impact_err1' (median: 0.193)
+2025-10-05 10:31:57,532 - INFO - Applied median imputation to column 'koi_impact_err2' (median: -0.207)
+2025-10-05 10:31:57,534 - INFO - Applied median imputation to column 'koi_duration_err1' (median: 0.142)
+2025-10-05 10:31:57,536 - INFO - Applied median imputation to column 'koi_duration_err2' (median: -0.142)
+2025-10-05 10:31:57,538 - INFO - Applied median imputation to column 'koi_depth' (median: 421.1)
+2025-10-05 10:31:57,538 - INFO - Applied median imputation to column 'koi_depth_err1' (median: 20.75)
+2025-10-05 10:31:57,544 - INFO - Applied median imputation to column 'koi_depth_err2' (median: -20.75)
+2025-10-05 10:31:57,545 - INFO - Applied median imputation to column 'koi_prad' (median: 2.39)
+2025-10-05 10:31:57,548 - INFO - Applied median imputation to column 'koi_prad_err1' (median: 0.52)
+2025-10-05 10:31:57,552 - INFO - Applied median imputation to column 'koi_prad_err2' (median: -0.3)
+2025-10-05 10:31:57,554 - INFO - Applied median imputation to column 'koi_teq' (median: 878.0)
+2025-10-05 10:31:57,556 - INFO - Applied median imputation to column 'koi_insol' (median: 141.6)
+2025-10-05 10:31:57,558 - INFO - Applied median imputation to column 'koi_insol_err1' (median: 72.83)
+2025-10-05 10:31:57,560 - INFO - Applied median imputation to column 'koi_insol_err2' (median: -40.26)
+2025-10-05 10:31:57,563 - INFO - Applied median imputation to column 'koi_model_snr' (median: 23.0)
+2025-10-05 10:31:57,564 - INFO - Applied median imputation to column 'koi_tce_plnt_num' (median: 1.0)
+2025-10-05 10:31:57,574 - INFO - Applied mode imputation to column 'koi_tce_delivname' (mode: q1_q17_dr25_tce)
+2025-10-05 10:31:57,577 - INFO - Applied median imputation to column 'koi_steff' (median: 5767.0)
+2025-10-05 10:31:57,577 - INFO - Applied median imputation to column 'koi_steff_err1' (median: 157.0)
+2025-10-05 10:31:57,581 - INFO - Applied median imputation to column 'koi_steff_err2' (median: -160.0)
+2025-10-05 10:31:57,583 - INFO - Applied median imputation to column 'koi_slogg' (median: 4.438)
+2025-10-05 10:31:57,585 - INFO - Applied median imputation to column 'koi_slogg_err1' (median: 0.07)
+2025-10-05 10:31:57,587 - INFO - Applied median imputation to column 'koi_slogg_err2' (median: -0.128)
+2025-10-05 10:31:57,590 - INFO - Applied median imputation to column 'koi_srad' (median: 1.0)
+2025-10-05 10:31:57,593 - INFO - Applied median imputation to column 'koi_srad_err1' (median: 0.251)
+2025-10-05 10:31:57,595 - INFO - Applied median imputation to column 'koi_srad_err2' (median: -0.111)
+2025-10-05 10:31:57,597 - INFO - Applied median imputation to column 'koi_kepmag' (median: 14.52)
+2025-10-05 10:31:57,599 - INFO - Missing value handling complete. Remaining missing values: 0
+2025-10-05 10:31:57,599 - INFO - Data shape after handling missing values: (9564, 42)
+2025-10-05 10:31:57,609 - INFO - Dropped text categorical variables: ['koi_tce_delivname']
+2025-10-05 10:31:57,609 - INFO - Kept text columns: ['koi_disposition']
+2025-10-05 10:31:57,610 - INFO - Data shape after dropping text columns: (9564, 41)
+2025-10-05 10:31:57,610 - INFO - Removed error columns: ['koi_period_err1', 'koi_period_err2', 'koi_time0bk_err1', 'koi_time0bk_err2', 'koi_impact_err1', 'koi_impact_err2', 'koi_duration_err1', 'koi_duration_err2', 'koi_depth_err1', 'koi_depth_err2', 'koi_prad_err1', 'koi_prad_err2', 'koi_insol_err1', 'koi_insol_err2', 'koi_steff_err1', 'koi_steff_err2', 'koi_slogg_err1', 'koi_slogg_err2', 'koi_srad_err1', 'koi_srad_err2']
+2025-10-05 10:31:57,618 - INFO - Data shape after removing error columns: (9564, 21)
+2025-10-05 10:31:57,911 - INFO - Cleaned data saved to: cleaned_data.csv
+2025-10-05 10:31:57,911 - INFO - Data processing pipeline completed successfully!
+2025-10-05 10:31:57,913 - INFO - Final data shape: (9564, 21)
+2025-10-05 10:31:57,918 - INFO - Data shape: (9564, 20)
+2025-10-05 10:31:57,921 - INFO - Target classes: ['CANDIDATE' 'CONFIRMED' 'FALSE POSITIVE']
+2025-10-05 10:31:57,927 - INFO - Class distribution: koi_disposition
+FALSE POSITIVE    4839
+CONFIRMED         2746
+CANDIDATE         1979
+Name: count, dtype: int64
+2025-10-05 10:31:57,973 - INFO - Training multiple models...
+2025-10-05 10:31:57,973 - INFO - Training Random Forest...
+2025-10-05 10:32:16,039 - INFO - Random Forest - CV F1 Score: 0.9212 (+/- 0.0092)
+2025-10-05 10:32:16,039 - INFO - Training Gradient Boosting...
+2025-10-05 10:33:51,618 - INFO - Gradient Boosting - CV F1 Score: 0.9199 (+/- 0.0100)
+2025-10-05 10:33:51,618 - INFO - Training Logistic Regression...
+2025-10-05 10:33:52,242 - INFO - Logistic Regression - CV F1 Score: 0.8006 (+/- 0.0262)
+2025-10-05 10:33:52,242 - INFO - Training SVM...
+2025-10-05 10:34:26,344 - INFO - SVM - CV F1 Score: 0.7416 (+/- 0.0179)
+2025-10-05 10:34:26,344 - INFO - Training Neural Network...
+2025-10-05 10:36:15,304 - INFO - Neural Network - Validation F1 Score: 0.8310
+2025-10-05 10:36:15,304 - INFO - Neural Network - Validation Accuracy: 0.8413
+2025-10-05 10:36:47,108 - INFO - Performing hyperparameter tuning...
+2025-10-05 10:46:11,574 - INFO - Best parameters: {'max_depth': None, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 300}
+2025-10-05 10:46:11,575 - INFO - Best CV score: 0.9231
+2025-10-05 11:05:22,714 - INFO - Model saved to exoplanet_classifier.joblib
+2025-10-05 11:05:22,714 - INFO - ML pipeline completed successfully!
+2025-10-05 11:06:48,021 - INFO - Loading and preparing data...
+2025-10-05 11:06:48,022 - INFO - Starting data processing pipeline...
+2025-10-05 11:06:48,136 - INFO - Data loaded successfully from cumulative_2025.10.04_07.24.46.csv
+2025-10-05 11:06:48,137 - INFO - Initial data shape: (9564, 49)
+2025-10-05 11:06:48,141 - INFO - Removed leakage columns: ['koi_pdisposition', 'koi_vet_stat', 'koi_vet_date', 'koi_comment', 'koi_disp_prov', 'koi_score', 'kepler_name', 'kepid', 'kepoi_name']
+2025-10-05 11:06:48,150 - INFO - Dropped columns with >20.0% missing values: ['koi_teq_err1', 'koi_teq_err2']
+2025-10-05 11:06:48,157 - INFO - Applied median imputation to column 'koi_period_err1' (median: 3.5205e-05)
+2025-10-05 11:06:48,159 - INFO - Applied median imputation to column 'koi_period_err2' (median: -3.5205e-05)
+2025-10-05 11:06:48,160 - INFO - Applied median imputation to column 'koi_time0bk_err1' (median: 0.00413)
+2025-10-05 11:06:48,160 - INFO - Applied median imputation to column 'koi_time0bk_err2' (median: -0.00413)
+2025-10-05 11:06:48,160 - INFO - Applied median imputation to column 'koi_impact' (median: 0.537)
+2025-10-05 11:06:48,167 - INFO - Applied median imputation to column 'koi_impact_err1' (median: 0.193)
+2025-10-05 11:06:48,169 - INFO - Applied median imputation to column 'koi_impact_err2' (median: -0.207)
+2025-10-05 11:06:48,171 - INFO - Applied median imputation to column 'koi_duration_err1' (median: 0.142)
+2025-10-05 11:06:48,174 - INFO - Applied median imputation to column 'koi_duration_err2' (median: -0.142)
+2025-10-05 11:06:48,176 - INFO - Applied median imputation to column 'koi_depth' (median: 421.1)
+2025-10-05 11:06:48,177 - INFO - Applied median imputation to column 'koi_depth_err1' (median: 20.75)
+2025-10-05 11:06:48,180 - INFO - Applied median imputation to column 'koi_depth_err2' (median: -20.75)
+2025-10-05 11:06:48,182 - INFO - Applied median imputation to column 'koi_prad' (median: 2.39)
+2025-10-05 11:06:48,183 - INFO - Applied median imputation to column 'koi_prad_err1' (median: 0.52)
+2025-10-05 11:06:48,185 - INFO - Applied median imputation to column 'koi_prad_err2' (median: -0.3)
+2025-10-05 11:06:48,186 - INFO - Applied median imputation to column 'koi_teq' (median: 878.0)
+2025-10-05 11:06:48,187 - INFO - Applied median imputation to column 'koi_insol' (median: 141.6)
+2025-10-05 11:06:48,189 - INFO - Applied median imputation to column 'koi_insol_err1' (median: 72.83)
+2025-10-05 11:06:48,191 - INFO - Applied median imputation to column 'koi_insol_err2' (median: -40.26)
+2025-10-05 11:06:48,193 - INFO - Applied median imputation to column 'koi_model_snr' (median: 23.0)
+2025-10-05 11:06:48,195 - INFO - Applied median imputation to column 'koi_tce_plnt_num' (median: 1.0)
+2025-10-05 11:06:48,200 - INFO - Applied mode imputation to column 'koi_tce_delivname' (mode: q1_q17_dr25_tce)
+2025-10-05 11:06:48,201 - INFO - Applied median imputation to column 'koi_steff' (median: 5767.0)
+2025-10-05 11:06:48,203 - INFO - Applied median imputation to column 'koi_steff_err1' (median: 157.0)
+2025-10-05 11:06:48,204 - INFO - Applied median imputation to column 'koi_steff_err2' (median: -160.0)
+2025-10-05 11:06:48,205 - INFO - Applied median imputation to column 'koi_slogg' (median: 4.438)
+2025-10-05 11:06:48,207 - INFO - Applied median imputation to column 'koi_slogg_err1' (median: 0.07)
+2025-10-05 11:06:48,211 - INFO - Applied median imputation to column 'koi_slogg_err2' (median: -0.128)
+2025-10-05 11:06:48,212 - INFO - Applied median imputation to column 'koi_srad' (median: 1.0)
+2025-10-05 11:06:48,213 - INFO - Applied median imputation to column 'koi_srad_err1' (median: 0.251)
+2025-10-05 11:06:48,214 - INFO - Applied median imputation to column 'koi_srad_err2' (median: -0.111)
+2025-10-05 11:06:48,217 - INFO - Applied median imputation to column 'koi_kepmag' (median: 14.52)
+2025-10-05 11:06:48,219 - INFO - Missing value handling complete. Remaining missing values: 0
+2025-10-05 11:06:48,220 - INFO - Data shape after handling missing values: (9564, 42)
+2025-10-05 11:06:48,224 - INFO - Dropped text categorical variables: ['koi_tce_delivname']
+2025-10-05 11:06:48,224 - INFO - Kept text columns: ['koi_disposition']
+2025-10-05 11:06:48,225 - INFO - Data shape after dropping text columns: (9564, 41)
+2025-10-05 11:06:48,230 - INFO - Removed error columns: ['koi_period_err1', 'koi_period_err2', 'koi_time0bk_err1', 'koi_time0bk_err2', 'koi_impact_err1', 'koi_impact_err2', 'koi_duration_err1', 'koi_duration_err2', 'koi_depth_err1', 'koi_depth_err2', 'koi_prad_err1', 'koi_prad_err2', 'koi_insol_err1', 'koi_insol_err2', 'koi_steff_err1', 'koi_steff_err2', 'koi_slogg_err1', 'koi_slogg_err2', 'koi_srad_err1', 'koi_srad_err2']
+2025-10-05 11:06:48,231 - INFO - Data shape after removing error columns: (9564, 21)
+2025-10-05 11:06:48,475 - INFO - Cleaned data saved to: cleaned_data.csv
+2025-10-05 11:06:48,475 - INFO - Data processing pipeline completed successfully!
+2025-10-05 11:06:48,475 - INFO - Final data shape: (9564, 21)
+2025-10-05 11:06:48,475 - INFO - Data shape: (9564, 20)
+2025-10-05 11:06:48,475 - INFO - Target classes: ['CANDIDATE' 'CONFIRMED' 'FALSE POSITIVE']
+2025-10-05 11:06:48,487 - INFO - Class distribution: koi_disposition
+FALSE POSITIVE    4839
+CONFIRMED         2746
+CANDIDATE         1979
+Name: count, dtype: int64
+2025-10-05 11:06:48,516 - INFO - Training multiple models...
+2025-10-05 11:06:48,516 - INFO - Training Random Forest...
+2025-10-05 11:07:14,387 - INFO - Random Forest - CV F1 Score: 0.9212 (+/- 0.0092)
+2025-10-05 11:07:14,388 - INFO - Training Gradient Boosting...
+2025-10-05 11:09:21,232 - INFO - Gradient Boosting - CV F1 Score: 0.9199 (+/- 0.0100)
+2025-10-05 11:09:21,232 - INFO - Training Logistic Regression...
+2025-10-05 11:09:22,094 - INFO - Logistic Regression - CV F1 Score: 0.8006 (+/- 0.0262)
+2025-10-05 11:09:22,094 - INFO - Training SVM...
+2025-10-05 11:10:00,364 - INFO - SVM - CV F1 Score: 0.7416 (+/- 0.0179)
+2025-10-05 11:10:00,364 - INFO - Training Neural Network...
+2025-10-05 11:12:00,248 - INFO - Neural Network - Validation F1 Score: 0.8355
+2025-10-05 11:12:00,248 - INFO - Neural Network - Validation Accuracy: 0.8445
+2025-10-05 11:12:16,382 - INFO - Performing hyperparameter tuning...
+2025-10-05 11:19:41,354 - INFO - Best parameters: {'max_depth': None, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 300}
+2025-10-05 11:19:41,354 - INFO - Best CV score: 0.9231
+2025-10-05 11:38:59,520 - INFO - Model saved to exoplanet_classifier.joblib
+2025-10-05 11:38:59,524 - INFO - ML pipeline completed successfully!

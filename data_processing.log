@@ -1,0 +1,91 @@
+2025-10-04 13:30:55,021 - INFO - Starting data processing pipeline...
+2025-10-04 13:30:55,184 - INFO - Data loaded successfully from cumulative_2025.10.04_07.24.46.csv
+2025-10-04 13:30:55,184 - INFO - Initial data shape: (9564, 49)
+2025-10-04 13:30:55,190 - INFO - Removed leakage columns: ['koi_pdisposition', 'koi_vet_stat', 'koi_vet_date', 'koi_comment', 'koi_disp_prov', 'koi_score', 'kepler_name', 'kepid', 'kepoi_name']
+2025-10-04 13:30:55,209 - INFO - Dropped columns with >20.0% missing values: ['koi_teq_err1', 'koi_teq_err2']
+2025-10-04 13:30:55,222 - INFO - Applied median imputation to column 'koi_period_err1' (median: 3.5205e-05)
+2025-10-04 13:30:55,226 - INFO - Applied median imputation to column 'koi_period_err2' (median: -3.5205e-05)
+2025-10-04 13:30:55,228 - INFO - Applied median imputation to column 'koi_time0bk_err1' (median: 0.00413)
+2025-10-04 13:30:55,232 - INFO - Applied median imputation to column 'koi_time0bk_err2' (median: -0.00413)
+2025-10-04 13:30:55,235 - INFO - Applied median imputation to column 'koi_impact' (median: 0.537)
+2025-10-04 13:30:55,242 - INFO - Applied median imputation to column 'koi_impact_err1' (median: 0.193)
+2025-10-04 13:30:55,246 - INFO - Applied median imputation to column 'koi_impact_err2' (median: -0.207)
+2025-10-04 13:30:55,250 - INFO - Applied median imputation to column 'koi_duration_err1' (median: 0.142)
+2025-10-04 13:30:55,258 - INFO - Applied median imputation to column 'koi_duration_err2' (median: -0.142)
+2025-10-04 13:30:55,262 - INFO - Applied median imputation to column 'koi_depth' (median: 421.1)
+2025-10-04 13:30:55,266 - INFO - Applied median imputation to column 'koi_depth_err1' (median: 20.75)
+2025-10-04 13:30:55,269 - INFO - Applied median imputation to column 'koi_depth_err2' (median: -20.75)
+2025-10-04 13:30:55,275 - INFO - Applied median imputation to column 'koi_prad' (median: 2.39)
+2025-10-04 13:30:55,277 - INFO - Applied median imputation to column 'koi_prad_err1' (median: 0.52)
+2025-10-04 13:30:55,283 - INFO - Applied median imputation to column 'koi_prad_err2' (median: -0.3)
+2025-10-04 13:30:55,285 - INFO - Applied median imputation to column 'koi_teq' (median: 878.0)
+2025-10-04 13:30:55,289 - INFO - Applied median imputation to column 'koi_insol' (median: 141.6)
+2025-10-04 13:30:55,294 - INFO - Applied median imputation to column 'koi_insol_err1' (median: 72.83)
+2025-10-04 13:30:55,298 - INFO - Applied median imputation to column 'koi_insol_err2' (median: -40.26)
+2025-10-04 13:30:55,301 - INFO - Applied median imputation to column 'koi_model_snr' (median: 23.0)
+2025-10-04 13:30:55,305 - INFO - Applied median imputation to column 'koi_tce_plnt_num' (median: 1.0)
+2025-10-04 13:30:55,313 - INFO - Applied mode imputation to column 'koi_tce_delivname' (mode: q1_q17_dr25_tce)
+2025-10-04 13:30:55,318 - INFO - Applied median imputation to column 'koi_steff' (median: 5767.0)
+2025-10-04 13:30:55,323 - INFO - Applied median imputation to column 'koi_steff_err1' (median: 157.0)
+2025-10-04 13:30:55,327 - INFO - Applied median imputation to column 'koi_steff_err2' (median: -160.0)
+2025-10-04 13:30:55,329 - INFO - Applied median imputation to column 'koi_slogg' (median: 4.438)
+2025-10-04 13:30:55,333 - INFO - Applied median imputation to column 'koi_slogg_err1' (median: 0.07)
+2025-10-04 13:30:55,335 - INFO - Applied median imputation to column 'koi_slogg_err2' (median: -0.128)
+2025-10-04 13:30:55,339 - INFO - Applied median imputation to column 'koi_srad' (median: 1.0)
+2025-10-04 13:30:55,343 - INFO - Applied median imputation to column 'koi_srad_err1' (median: 0.251)
+2025-10-04 13:30:55,347 - INFO - Applied median imputation to column 'koi_srad_err2' (median: -0.111)
+2025-10-04 13:30:55,351 - INFO - Applied median imputation to column 'koi_kepmag' (median: 14.52)
+2025-10-04 13:30:55,356 - INFO - Missing value handling complete. Remaining missing values: 0
+2025-10-04 13:30:55,358 - INFO - Data shape after handling missing values: (9564, 42)
+2025-10-04 13:30:55,363 - INFO - Dropped text categorical variables: ['koi_disposition', 'koi_tce_delivname']
+2025-10-04 13:30:55,364 - INFO - Data shape after dropping text columns: (9564, 40)
+2025-10-04 13:30:56,256 - INFO - Cleaned data saved to: cleaned_data.csv
+2025-10-04 13:30:56,256 - INFO - Data processing pipeline completed successfully!
+2025-10-04 13:30:56,259 - INFO - Final data shape: (9564, 40)
+2025-10-04 13:35:24,858 - INFO - Starting data processing pipeline...
+2025-10-04 13:35:25,084 - INFO - Data loaded successfully from cumulative_2025.10.04_07.24.46.csv
+2025-10-04 13:35:25,084 - INFO - Initial data shape: (9564, 49)
+2025-10-04 13:35:25,084 - INFO - Removed leakage columns: ['koi_pdisposition', 'koi_vet_stat', 'koi_vet_date', 'koi_comment', 'koi_disp_prov', 'koi_score', 'kepler_name', 'kepid', 'kepoi_name']
+2025-10-04 13:35:25,112 - INFO - Dropped columns with >20.0% missing values: ['koi_teq_err1', 'koi_teq_err2']
+2025-10-04 13:35:25,122 - INFO - Applied median imputation to column 'koi_period_err1' (median: 3.5205e-05)
+2025-10-04 13:35:25,130 - INFO - Applied median imputation to column 'koi_period_err2' (median: -3.5205e-05)
+2025-10-04 13:35:25,136 - INFO - Applied median imputation to column 'koi_time0bk_err1' (median: 0.00413)
+2025-10-04 13:35:25,140 - INFO - Applied median imputation to column 'koi_time0bk_err2' (median: -0.00413)
+2025-10-04 13:35:25,147 - INFO - Applied median imputation to column 'koi_impact' (median: 0.537)
+2025-10-04 13:35:25,151 - INFO - Applied median imputation to column 'koi_impact_err1' (median: 0.193)
+2025-10-04 13:35:25,156 - INFO - Applied median imputation to column 'koi_impact_err2' (median: -0.207)
+2025-10-04 13:35:25,160 - INFO - Applied median imputation to column 'koi_duration_err1' (median: 0.142)
+2025-10-04 13:35:25,168 - INFO - Applied median imputation to column 'koi_duration_err2' (median: -0.142)
+2025-10-04 13:35:25,173 - INFO - Applied median imputation to column 'koi_depth' (median: 421.1)
+2025-10-04 13:35:25,174 - INFO - Applied median imputation to column 'koi_depth_err1' (median: 20.75)
+2025-10-04 13:35:25,184 - INFO - Applied median imputation to column 'koi_depth_err2' (median: -20.75)
+2025-10-04 13:35:25,188 - INFO - Applied median imputation to column 'koi_prad' (median: 2.39)
+2025-10-04 13:35:25,193 - INFO - Applied median imputation to column 'koi_prad_err1' (median: 0.52)
+2025-10-04 13:35:25,198 - INFO - Applied median imputation to column 'koi_prad_err2' (median: -0.3)
+2025-10-04 13:35:25,201 - INFO - Applied median imputation to column 'koi_teq' (median: 878.0)
+2025-10-04 13:35:25,206 - INFO - Applied median imputation to column 'koi_insol' (median: 141.6)
+2025-10-04 13:35:25,211 - INFO - Applied median imputation to column 'koi_insol_err1' (median: 72.83)
+2025-10-04 13:35:25,216 - INFO - Applied median imputation to column 'koi_insol_err2' (median: -40.26)
+2025-10-04 13:35:25,220 - INFO - Applied median imputation to column 'koi_model_snr' (median: 23.0)
+2025-10-04 13:35:25,225 - INFO - Applied median imputation to column 'koi_tce_plnt_num' (median: 1.0)
+2025-10-04 13:35:25,237 - INFO - Applied mode imputation to column 'koi_tce_delivname' (mode: q1_q17_dr25_tce)
+2025-10-04 13:35:25,241 - INFO - Applied median imputation to column 'koi_steff' (median: 5767.0)
+2025-10-04 13:35:25,246 - INFO - Applied median imputation to column 'koi_steff_err1' (median: 157.0)
+2025-10-04 13:35:25,251 - INFO - Applied median imputation to column 'koi_steff_err2' (median: -160.0)
+2025-10-04 13:35:25,255 - INFO - Applied median imputation to column 'koi_slogg' (median: 4.438)
+2025-10-04 13:35:25,256 - INFO - Applied median imputation to column 'koi_slogg_err1' (median: 0.07)
+2025-10-04 13:35:25,266 - INFO - Applied median imputation to column 'koi_slogg_err2' (median: -0.128)
+2025-10-04 13:35:25,269 - INFO - Applied median imputation to column 'koi_srad' (median: 1.0)
+2025-10-04 13:35:25,275 - INFO - Applied median imputation to column 'koi_srad_err1' (median: 0.251)
+2025-10-04 13:35:25,280 - INFO - Applied median imputation to column 'koi_srad_err2' (median: -0.111)
+2025-10-04 13:35:25,287 - INFO - Applied median imputation to column 'koi_kepmag' (median: 14.52)
+2025-10-04 13:35:25,291 - INFO - Missing value handling complete. Remaining missing values: 0
+2025-10-04 13:35:25,297 - INFO - Data shape after handling missing values: (9564, 42)
+2025-10-04 13:35:25,303 - INFO - Dropped text categorical variables: ['koi_tce_delivname']
+2025-10-04 13:35:25,304 - INFO - Kept text columns: ['koi_disposition']
+2025-10-04 13:35:25,307 - INFO - Data shape after dropping text columns: (9564, 41)
+2025-10-04 13:35:25,316 - INFO - Removed error columns: ['koi_period_err1', 'koi_period_err2', 'koi_time0bk_err1', 'koi_time0bk_err2', 'koi_impact_err1', 'koi_impact_err2', 'koi_duration_err1', 'koi_duration_err2', 'koi_depth_err1', 'koi_depth_err2', 'koi_prad_err1', 'koi_prad_err2', 'koi_insol_err1', 'koi_insol_err2', 'koi_steff_err1', 'koi_steff_err2', 'koi_slogg_err1', 'koi_slogg_err2', 'koi_srad_err1', 'koi_srad_err2']
+2025-10-04 13:35:25,318 - INFO - Data shape after removing error columns: (9564, 21)
+2025-10-04 13:35:25,872 - INFO - Cleaned data saved to: cleaned_data.csv
+2025-10-04 13:35:25,873 - INFO - Data processing pipeline completed successfully!
+2025-10-04 13:35:25,874 - INFO - Final data shape: (9564, 21)
